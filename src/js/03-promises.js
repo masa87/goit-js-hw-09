@@ -24,16 +24,15 @@ const runFunction = e => {
           reject(Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delayValue}ms`));
           //Reject
         }
-        console.log(stepValue);
       }, delayValue);
     });
   }
 
   for (let i = 0; i < amount.value; i++) {
-    let position = 0;
+    let position = i + 1;
     delayValue = delayValue + stepValue;
 
-    createPromise(i + 1, delayValue)
+    createPromise(position, delayValue)
       .then(value => {
         console.log(`✅ Fulfilled promise ${position} in ${delayValue}ms`);
         // console.log(value);
