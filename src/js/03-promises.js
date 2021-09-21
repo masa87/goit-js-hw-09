@@ -18,30 +18,25 @@ const runFunction = e => {
       const shouldResolve = Math.random() > 0.3;
       setTimeout(() => {
         if (shouldResolve) {
-          //Fullfill
           resolve(Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delayValue}ms`));
         } else {
           reject(Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delayValue}ms`));
-          //Reject
         }
       }, delayValue);
     });
   }
 
-  for (let i = 0; i < amount.value; i++) {
-    let position = i + 1;
-    delayValue = delayValue + stepValue;
+  for (let i = 1; i < amount.value; i++) {
+    let position = i;
 
     createPromise(position, delayValue)
       .then(value => {
-        console.log(`✅ Fulfilled promise ${position} in ${delayValue}ms`);
-        // console.log(value);
+        console.log(`✅ Fulfilled promise ${position - 1} in ${delayValue}ms`);
       })
       .catch(err => {
-        console.log(`❌ Rejected promise ${position} in ${delayValue}ms`);
-        // console.log(err);
+        console.log(`❌ Rejected promise ${position - 1} in ${delayValue}ms`);
       });
-    console.log(delayValue);
+    delayValue = delayValue + stepValue;
     position++;
   }
 };
