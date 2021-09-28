@@ -12,6 +12,7 @@ const runFunction = e => {
 
   let delayValue = delay.valueAsNumber;
   let stepValue = step.valueAsNumber;
+  let amountValue = amount.valueAsNumber;
 
   function createPromise(position, delayValue) {
     return new Promise((resolve, reject) => {
@@ -26,7 +27,7 @@ const runFunction = e => {
     });
   }
 
-  for (let i = 1; i < amount.value; i++) {
+  for (let i = 1; i <= amountValue; i++) {
     let position = i;
 
     createPromise(position, delayValue)
